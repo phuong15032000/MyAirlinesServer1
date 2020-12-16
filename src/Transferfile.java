@@ -215,7 +215,6 @@ class transferfile extends Thread implements Serializable {
         String query = "INSERT INTO flight (departureTime, arrivalTime, totalSeat, availableSeat, orderedSeat, routeId, airCraftId) VALUES(?, ?, ?, ?, ?, ?, ?)";
 
         try {
-            Class.forName(JDBC_DRIVER);
             connection = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
             PreparedStatement stmt = connection.prepareStatement(query);
             stmt.setString(1, flight.getDepartureTime());
@@ -228,14 +227,10 @@ class transferfile extends Thread implements Serializable {
             stmt.execute();
             connection.close();
             System.out.println("da nhan dc lenh chay");
-             
-        } catch (ClassNotFoundException e) {
-            doutput.writeUTF("addFlightFail");
-            e.printStackTrace();
+            doutput.writeUTF("addFlightSuc");
         } catch (SQLException ex) {
             doutput.writeUTF("addFlightFail");
         } finally {
-
             connection.close();
         }
     }

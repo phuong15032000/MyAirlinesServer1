@@ -27,7 +27,7 @@ public class Server {
 		 	}
 	        ServerSocket soc=new ServerSocket(PortNo);
 	        ServerSocket datasoc=new ServerSocket(PortNo-1);
-	        System.out.println("FTP Server Started on Port Number "+ PortNo);
+	        System.out.println("MyAirlines Server 1 Started on Port Number "+ PortNo);
 	        while(true)
 	        {
 	            System.out.println("Waiting for Connection ...");
